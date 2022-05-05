@@ -13,18 +13,12 @@ from src.sender.base import SenderBase
 from src.utils import LOGGER
 
 TG_BOT_MSG_TEMPLATE = """
-<a href="{doc_link}"><b>👉👉{doc_name}</b></a>
+<b>{doc_name}</b>
 
-<pre>👉检测为: {doc_cus_des}</pre>
-
-<pre>来源: {doc_source}</pre>
-<pre>作者: {doc_source_name}</pre>
+#{doc_source_name}
 <pre>更新时间: {doc_date}</pre>
 
-<pre>文章关键字: {doc_keywords}</pre>
-
-<a href="https://github.com/howie6879/liuli"><b>👉技术支持[liuli]❤</b></a>
-<a href="https://github.com/howie6879/liuli/issues/4">👉识别错误？点击广告反馈</a>
+{doc_link}
 """
 
 
