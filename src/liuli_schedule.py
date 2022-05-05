@@ -43,9 +43,6 @@ def run_liuli_task(ll_config: dict):
         # 分发器配置
         sender_conf: dict = ll_config_data["sender"]
         sender_conf.update(basic_filter)
-        # 备份器配置
-        backup_conf: dict = ll_config_data["backup"]
-        backup_conf.update(basic_filter)
 
         # 采集器执行
         LOGGER.info("采集器开始执行!")
@@ -65,10 +62,6 @@ def run_liuli_task(ll_config: dict):
         LOGGER.info("分发器开始执行!")
         send_doc(sender_conf)
         LOGGER.info("分发器执行完毕!")
-        # 备份器执行
-        LOGGER.info("备份器开始执行!")
-        backup_doc(backup_conf)
-        LOGGER.info("备份器执行完毕!")
     except Exception as e:
         LOGGER.error(f"执行失败！{e}")
 

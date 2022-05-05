@@ -31,11 +31,6 @@ def run(collect_config: dict):
             LOGGER.info(entry.link)
             # 休眠
             time.sleep(delta_time)
-            resp_text = get_html_by_requests(
-                url=entry.link, headers={"User-Agent": Config.SPIDER_UA}
-            )
-            _, doc_core_html = extract_core_html(resp_text)
-            doc_core_html_lib = text_compress(doc_core_html)
             input_data = {
                 "doc_date": entry.get("published", ""),
                 "doc_image": "",
@@ -45,7 +40,6 @@ def run(collect_config: dict):
                 "doc_source_meta_list": [],
                 "doc_keywords": " ",
                 "doc_des": entry.get("description", ""),
-                "doc_core_html": doc_core_html_lib,
                 "doc_type": "article",
                 "doc_author": "",
                 "doc_source_name": name,
