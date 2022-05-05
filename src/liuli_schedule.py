@@ -87,7 +87,9 @@ def run_liuli_schedule(ll_config_name: str = "default"):
         "period_list", ["00:10", "12:10", "21:10"]
     )
     for each in schdule_time_list:
-        schedule.every().day.at(each).do(run_liuli_task, ll_config)
+        # schedule.every().day.at(each).do(run_liuli_task, ll_config)
+        # 固定10分钟执行一次
+        schedule.every(10).minutes.do(run_liuli_task, ll_config)
 
     name: str = ll_config["name"]
     author: str = ll_config["author"]
