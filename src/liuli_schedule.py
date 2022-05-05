@@ -16,7 +16,6 @@ from multiprocessing import Process
 
 import schedule
 
-from src.backup.action import backup_doc
 from src.collector.collect_factory import collect_factory
 from src.config.config import Config
 from src.processor import processor_dict
