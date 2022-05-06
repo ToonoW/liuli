@@ -70,7 +70,8 @@ class TGSender(SenderBase):
             data = {
                 "chat_id": self.chat_id,
                 "text": message,
-                "parse_mode": "markdown",
+                "parse_mode": "html",
+                "disable_web_page_preview": False,
             }
             resp_dict = send_post_request(
                 url=self.url,
