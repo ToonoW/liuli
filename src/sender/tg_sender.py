@@ -69,7 +69,7 @@ class TGSender(SenderBase):
                 url=self.url,
                 data=data,
                 headers={"Content-Type": "application/json"},
-                timeout=5,
+                timeout=10,
             )
             notice_msg = f"{doc_cus_des}👉{doc_source_name}_{doc_name}：{doc_link} 分发到 {self.send_type}"
             if resp_dict:
