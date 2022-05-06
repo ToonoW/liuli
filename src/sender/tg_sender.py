@@ -13,22 +13,20 @@ from src.sender.base import SenderBase
 from src.utils import LOGGER
 
 TG_BOT_MSG_TEMPLATE = """
-<b>{doc_name}</b>
+*{doc_name}*
 
 #{doc_source_name}
-<pre>更新时间: {doc_date}</pre>
-
+更新时间: {doc_date}
 {doc_link}
 """
 
 TG_BOT_MSG_YOUMINXINGKONG_TEMPLATE = """
-<b>{doc_name}</b>
+*{doc_name}*
 
-<img src="{doc_image}"></img>
+[]({doc_image})
 
 #{doc_source_name}
-<pre>更新时间: {doc_date}</pre>
-
+更新时间: {doc_date}
 {doc_link}
 """
 
@@ -75,8 +73,7 @@ class TGSender(SenderBase):
             data = {
                 "chat_id": self.chat_id,
                 "text": message,
-                "parse_mode": "HTML",
-                "disable_web_page_preview": "yes",
+                "parse_mode": "markdown",
             }
             resp_dict = send_post_request(
                 url=self.url,
