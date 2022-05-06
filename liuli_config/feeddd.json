@@ -29,6 +29,7 @@
   },
   "sender": {
     "sender_list": ["tg"],
+    "tg_chat_id": "",
     "query_days": 7,
     "delta_time": 3
   },

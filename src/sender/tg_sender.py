@@ -27,7 +27,7 @@ class TGSender(SenderBase):
     Telegram分发类
     """
 
-    def __init__(self, init_config: dict):
+    def __init__(self, init_config: dict, send_conf: dict=None):
         """
         初始化相关变量
         :param init_config:
@@ -36,6 +36,12 @@ class TGSender(SenderBase):
         self.chat_id = init_config.get("tg_chat_id", Config.TG_CHAT_ID)
         self.token = init_config.get("tg_token", Config.TG_TOKEN)
         self.url = f"https://api.telegram.org/bot{self.token}/sendMessage"
+
+        # 如果分发器中配置了chat_id，则使用分发器中定制的chat_id
+        if send_conf:
+            tg_chat_id = send_conf.get("tg_chat_id")
+            if tg_chat_id:
+                self.chat_id = tg_chat_id
 
     def send(self, send_data) -> bool:
         """
@@ -87,14 +93,14 @@ class TGSender(SenderBase):
         return send_status
 
 
-def send(init_config: dict, send_data: dict) -> bool:
+def send(init_config: dict, send_data: dict, send_conf: dict=None) -> bool:
     """
     下发到Telegram
     :param init_config: 下发终端配置
     :param send_data: 下发内容字典，字段开发者自定义
     :return:
     """
-    return TGSender(init_config=init_config).send(send_data)
+    return TGSender(init_config=init_config, send_conf=send_conf).send(send_data)
 
 
 if __name__ == "__main__":

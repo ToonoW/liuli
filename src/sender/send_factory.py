@@ -14,7 +14,7 @@ from importlib import import_module
 from src.utils import LOGGER
 
 
-def send_factory(send_type: str, init_config: dict, send_data: dict) -> bool:
+def send_factory(send_type: str, sender_conf: dict, init_config: dict, send_data: dict) -> bool:
     """
     分发器工厂函数
     :param send_type: 下发终端类型
