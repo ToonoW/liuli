@@ -13,11 +13,10 @@ from src.sender.base import SenderBase
 from src.utils import LOGGER
 
 TG_BOT_MSG_TEMPLATE = """
-<b>{doc_name}</b>
+*{doc_name}*
 
 #{doc_source_name}
-<pre>更新时间: {doc_date}</pre>
-
+更新时间: {doc_date}
 {doc_link}
 """
 
