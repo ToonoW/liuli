@@ -23,7 +23,7 @@ TG_BOT_MSG_TEMPLATE = """
 TG_BOT_MSG_YOUMINXINGKONG_TEMPLATE = """
 <b>{doc_name}</b>
 {doc_des}
-<img src="{doc_image}"></img>
+<a href="{doc_image}">&#8205;</a>
 {doc_link}
 """
 
