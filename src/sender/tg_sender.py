@@ -21,13 +21,24 @@ TG_BOT_MSG_TEMPLATE = """
 {doc_link}
 """
 
+TG_BOT_MSG_YOUMINXINGKONG_TEMPLATE = """
+<b>{doc_name}</b>
+
+<img src="{doc_image}"></img>
+
+#{doc_source_name}
+<pre>更新时间: {doc_date}</pre>
+
+{doc_link}
+"""
+
 
 class TGSender(SenderBase):
     """
     Telegram分发类
     """
 
-    def __init__(self, init_config: dict, sender_conf: dict=None):
+    def __init__(self, init_config: dict, sender_conf: dict = None):
         """
         初始化相关变量
         :param init_config:
@@ -59,6 +70,8 @@ class TGSender(SenderBase):
         send_status = True
         if not is_send:
             message = TG_BOT_MSG_TEMPLATE.format_map(send_data)
+            if send_data.get("doc_source") == "liuli_youminxingkong":
+                message = TG_BOT_MSG_YOUMINXINGKONG_TEMPLATE.format_map(send_data)
             data = {
                 "chat_id": self.chat_id,
                 "text": message,
@@ -93,7 +106,7 @@ class TGSender(SenderBase):
         return send_status
 
 
-def send(init_config: dict, send_data: dict, sender_conf: dict=None) -> bool:
+def send(init_config: dict, send_data: dict, sender_conf: dict = None) -> bool:
     """
     下发到Telegram
     :param init_config: 下发终端配置
