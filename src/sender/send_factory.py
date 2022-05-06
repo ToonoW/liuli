@@ -25,7 +25,7 @@ def send_factory(send_type: str, sender_conf: dict, init_config: dict, send_data
     send_status = False
     try:
         send_module = import_module(f"src.sender.{send_type}_sender")
-        send_status = send_module.send(init_config, send_data)
+        send_status = send_module.send(init_config, send_data, sender_conf)
     except ModuleNotFoundError:
         LOGGER.error(f"目标终端类型不存在 {send_type} - {init_config} - {send_data}")
     return send_status

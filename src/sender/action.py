@@ -72,7 +72,7 @@ def send_doc(sender_conf: dict):
                 # 每次分发休眠一定时间
                 time.sleep(delta_time)
                 send_factory(
-                    send_type=send_type, init_config=init_config, send_data=each_data, send_conf=sender_conf
+                    send_type=send_type, init_config=init_config, send_data=each_data, sender_conf=sender_conf
                 )
     else:
         LOGGER.error()("未配置分发器!")
