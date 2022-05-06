@@ -107,6 +107,25 @@ def extract_chapters(chapter_url, html):
     return all_chapters_sorted
 
 
+def extract_youminxingkong_news(html):
+    """解析游民星空新闻"""
+    res_soup = BeautifulSoup(str(html), "html5lib")
+    all_news = []
+    for li in res_soup.find("ul", class_="pictxt contentpaging").find_all("li"):
+        each_data = {
+            "title": li.find("div", class_="tit").find("a", class_="tt").string,
+            "url": li.find("div", class_="tit").find("a", class_="tt")["href"],
+            "cover_img": li.find("div", class_="img").a.img["src"],
+            "desc": li.find("div", class_="con").find("div", class_="txt").string,
+            "dt": li.find("div", class_="con")
+            .find("div", class_="tem")
+            .find("div", class_="time")
+            .string,
+        }
+        all_news.append(each_data)
+    return all_news
+
+
 def extract_core_html(html: str):
     """从文章类型提取核心HTML
 
