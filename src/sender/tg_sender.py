@@ -23,12 +23,8 @@ TG_BOT_MSG_TEMPLATE = """
 
 TG_BOT_MSG_YOUMINXINGKONG_TEMPLATE = """
 <b>{doc_name}</b>
-
+{doc_des}
 <img src="{doc_image}"></img>
-
-#{doc_source_name}
-<pre>更新时间: {doc_date}</pre>
-
 {doc_link}
 """
 
@@ -75,8 +71,7 @@ class TGSender(SenderBase):
             data = {
                 "chat_id": self.chat_id,
                 "text": message,
-                "parse_mode": "HTML",
-                "disable_web_page_preview": "yes",
+                "parse_mode": "markdown",
             }
             resp_dict = send_post_request(
                 url=self.url,
